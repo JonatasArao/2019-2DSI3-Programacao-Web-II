@@ -41,7 +41,7 @@ if(isset($_GET))
 
 <body>
     <div class="container py-5">
-        <form action="index.php" method="get">
+        <form action="Exercicio_de_Fixacao.php" method="get">
         <div class="form-row">
             <div class="form-group col-md-6">
             Nome Completo: <input type="text" name="nome" class="form-control"><br>
