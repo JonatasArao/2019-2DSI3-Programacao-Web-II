@@ -7,22 +7,23 @@ if($_POST)
     $idade = date_diff($dataNsc,$dataAtual)->format('%y');
     $vlrCompra = $_POST['vlrCompra'];
     $formaPg = $_POST['formaPg'];
+    $valorFinal = $vlrCompra;
 
     if($idade < 18 && $formaPg == "debitoDinheiro")
     {
-        $valorFinal = $vlrCompra * 0.9;
+        $valorFinal *= 0.9;
     }
     if($idade >= 18 && $formaPg == "creditoMaster")
     {
-        $valorFinal = $vlrCompra * 1.05;
+        $valorFinal *= 1.05;
     }
     if($idade >= 18 && $formaPg == "creditoVisa")
     {
-        $valorFinal = $vlrCompra * 1.1;
+        $valorFinal *= 1.1;
     }
     if($idade >= 18 && $formaPg == "creditoElo")
     {
-        $valorFinal = $vlrCompra * 1.2;
+        $valorFinal *= 1.2;
     }
 }
 ?>
