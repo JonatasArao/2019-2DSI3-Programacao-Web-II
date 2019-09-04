@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Agenda</title>
+	<link rel="stylesheet" href="bootstrap.min.css">
+	<link rel="stylesheet" href="font-awesome.min.css">
+	<script src="https://kit.fontawesome.com/8d210d7cb2.js"></script>
+	<script src="jquery-3.3.1.slim.min.js"></script>
+	<style>
+		* {
+			margin: 0;
+		}
+
+		legend {
+			text-align: center;
+			color: yellow;
+		}
+
+		.titulo {
+			text-align: center;
+			background-color: #2c1980;
+			color: white;
+			font-size: 36px;
+		}
+
+		.meio {
+			border-bottom: #337079 dotted 2px;
+
+			color: #337079;
+		}
+
+		.controls {
+			float: right;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container-fluid">
+		<div class="row titulo">
+			<div class="col-9 mt-3 mb-3 text-left">
+				<h3><i class="far fa-address-book"></i> Minha Agenda</h3>
+			</div>
+			<div class="col-3 mt-3 mb-3 text-right">
+				<h3>
+					<a href="#" data-toggle="modal" data-target="#Novo"><i class="fas fa-user-plus"></i></a>
+					<a href="#" data-toggle="modal" data-target="#Marcar"><i class="fa fa-time"></i></a>
+				</h3>
+			</div>
+		</div>
+		<div class="row meio" id="contatos">
+			<div class="col-10 mt-2">
+				<h3>Nome</h3>
+				<p><i class="fas fa-phone"></i> (XX) XXXXX-XXXX<br><i class="far fa-envelope"></i> nome@email.com</p>
+			</div>
+			<div class="col-2 mt-2 pt-2 text-right">
+				<h4><i class="far fa-edit editar" id='+o.id+'></i> <i class="fa fa-trash excluir" id='+o.id+'></i></h4>
+			</div>
+		</div>
+
+		<div class="modal fade" id="Novo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+			aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Novo Contato</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<form action="addContatinho.php" method="post" id="cad">
+							<input type="hidden" class="form-control" id="id" name="id" value="">
+							<div class="form-group">
+								<label for="nome" class="col-form-label">Nome:</label>
+								<input type="text" class="form-control" id="nome" name="nome" value="">
+							</div>
+							<div class="form-group">
+								<label for="telefone" class="col-form-label">Telefone:</label>
+								<input type="text" class="form-control" id="telefone" name="telefone">
+							</div>
+							<div class="form-group">
+								<label for="email" class="col-form-label">Email:</label>
+								<input type="text" class="form-control" id="email" name="email">
+							</div>
+
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+						<button type="submit" class="btn btn-primary">Salvar</button>
+					</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="bootstrap.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$('#contatos').load('contatinhos.php');
+		});
+	</script>
+</body>
+
+</html>
