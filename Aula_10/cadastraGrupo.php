@@ -23,5 +23,5 @@ if($_POST)
 
     $consulta = $GLOBALS['conecta']->query($sql);
 
-    header('Location: cadastroConfirmado.php');
+    header('Location: cadastroConfirmado.html');
 }
