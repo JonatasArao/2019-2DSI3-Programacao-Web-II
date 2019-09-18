@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Máquina: localhost
--- Data de Criação: 17-Set-2019 às 01:41
+-- Data de Criação: 17-Set-2019 às 23:25
 -- Versão do servidor: 5.6.13
 -- versão do PHP: 5.4.17
 
@@ -17,8 +17,10 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de Dados: `feiraciencias`
+-- Base de Dados: `feiracadastro`
 --
+CREATE DATABASE IF NOT EXISTS `feiracadastro` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `feiracadastro`;
 
 -- --------------------------------------------------------
 
@@ -37,8 +39,9 @@ CREATE TABLE IF NOT EXISTS `cadastro` (
   `nmProjeto` varchar(128) NOT NULL,
   `nmProfessor` varchar(128) NOT NULL,
   `riscos` varchar(128) DEFAULT NULL,
+  `dsProjeto` varchar(128) DEFAULT NULL,
   PRIMARY KEY (`idGrupo`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

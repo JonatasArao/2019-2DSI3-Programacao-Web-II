@@ -10,7 +10,7 @@
 
 <body class="bg-light">
     <nav class="navbar navbar-dark bg-success">
-        <a class="navbar-brand" href="#">Feira de Ciências</a>
+        <a class="navbar-brand" href="index.php">Feira de Ciências</a>
     </nav>
 
     <form action="cadastraGrupo.php" method="post" class="container mt-4">
@@ -45,39 +45,39 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="nome1">Nome 1º Integrante do Grupo</label>
-                <input type="text" class="form-control" name="nome1">
+                <input type="text" required class="form-control" name="nome1">
             </div>
             <div class="form-group col-md-6">
                 <label for="email1">Email 1º Integrante do Grupo</label>
-                <input type="email" class="form-control" name="email1">
+                <input type="email" required class="form-control" name="email1">
             </div>
         </div>
 
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="nome2">Nome 2º Integrante do Grupo</label>
-                <input type="text" class="form-control" name="nome2">
+                <input type="text" required class="form-control" name="nome2">
             </div>
             <div class="form-group col-md-6">
                 <label for="email2">Email 2º Integrante do Grupo</label>
-                <input type="email" class="form-control" name="email2">
+                <input type="email" required class="form-control" name="email2">
             </div>
         </div>
 
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="nome3">Nome 3º Integrante do Grupo</label>
-                <input type="text" class="form-control" name="nome3">
+                <input type="text" required class="form-control" name="nome3">
             </div>
             <div class="form-group col-md-6">
                 <label for="email3">Email 3º Integrante do Grupo</label>
-                <input type="email" class="form-control" name="email3">
+                <input type="email" required class="form-control" name="email3">
             </div>
         </div>
 
         <div class="form-group">
             <label for="riscos">Riscos do Projeto</label>
-            <select multiple class="form-control" name="riscos">
+            <select multiple class="form-control" name="riscos[]">
                 <option value="Fogo">Fogo</option>
                 <option value="Choque Elétrico">Choque Elétrico</option>
                 <option value="Intoxicação">Intoxicação</option>

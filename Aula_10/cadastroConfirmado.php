@@ -10,18 +10,26 @@
 
 <body class="bg-light">
     <nav class="navbar navbar-dark bg-success">
-        <a class="navbar-brand" href="index.php">Feira de Ciências</a>
+        <a class="navbar-brand text-center" href="index.php">Feira de Ciências</a>
     </nav>
 
-    <section class="container mt-5">
-        <div class="row">
-            <a href="form.php" class="mx-auto"><button type="button" class="btn btn-success btn-lg">Cadastrar Grupo</button></a>
-            <a href="verGrupos.php" class="mx-auto"><button type="button" class="btn btn-success btn-lg">Ver Grupos</button></a>
+    <section class="container my-4">
+        <div class="alert alert-success text-center" role="alert">
+            Cadastro de Grupo Confirmado!
+        </div>
+        <h1 class="text-center my-4">Grupos Cadastrados</h1>
+        <div class="row" id="cadastro">
+            
         </div>
     </section>
 
     <script src="js/jquery-3.3.1.slim.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script>
+		$(document).ready(function(){
+			$('#cadastro').load('cadastros.php');
+		});
+	</script>
 </body>
 
 </html>
