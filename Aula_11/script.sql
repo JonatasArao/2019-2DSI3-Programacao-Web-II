@@ -1,15 +1,15 @@
-create database chat;
+CREATE DATABASE chat;
 
-use chat;
+USE chat;
 
-create table user(
-	id int primary key auto_increment,
-	nome varchar(45) not null
-	);
-create table mensagem(
-	id int primary key auto_increment,
-	mensagem varchar(200) not null,
-	destino int,
-	origem int,
-	foreign key (origem) references user (id)
-	);
+CREATE TABLE user(
+	id INT PRIMARY KEY AUTO_INCREMENT,
+	nome VARCHAR(45) NOT NULL
+);
+CREATE TABLE mensagem(
+	id INT PRIMARY KEY AUTO_INCREMENT,
+	mensagem VARCHAR(200) NOT NULL,
+	destino INT,
+	origem INT,
+	FOREIGN KEY (origem) REFERENCES user (id)
+);

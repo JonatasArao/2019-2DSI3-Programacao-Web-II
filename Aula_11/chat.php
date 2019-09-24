@@ -1,10 +1,9 @@
 <?php
-include("conn.php");
+include('conn.php');
 ?>
-
 <style>
 	
-#box{width:500px;min-height:400px;border: 1px solid navy;padding:10px;}
+#box{width:500px;max-height:400px;min-height:400px;border: 1px solid navy;padding:10px; overflow-y: scroll;}
 #msg{width:450px;min-height:100px;float:left;}
 #btn{margin-left:10px;}
 #users{float:left;margin-left:550px;width:200px;border:1px solid blue;
@@ -28,27 +27,46 @@ li{
 
 <script src="jquery.min.js"></script>
 <script>
-
+	$(document).ready(function(){
+		setInterval(function(){
+			$('#box').load('msgs.php');
+			$('#box').animate({scrollTop: $('#box')[0].scrollHeight}, 500);
+		}, 1000);
+	});
+	$(document).on('submit','#form',function(){
+		var dados =  $(this).serialize();
+		$.ajax({
+			type: 'POST',
+			url: 'cadastrar.php',
+			data: dados,
+			success: function(){
+				// o que fazer quando da certo
+				$('#msg').val('');
+			}
+		})
+		return false;
+	});
 </script>
 
 	<div id="users">
 	<!-- mostrar usuarios online -->
 	<?php
-	$usuarios = ListarUsuarios();
-	while($user = $usuarios->fetch_array()){
-		echo '<li class="privado" id="" value="">'.$user['nome'].'</li>';
+		$usuarios = ListarUsuarios();
+		while($user = $usuarios->fetch_array()){
+			echo '<li class="privado" id="" value="">'.$user['nome'].'</li>';
 		}
-		?>	
+	?>
 	<!-- fim -->
 	</div>
 	<div name="box" id="box">		
+
 	</div>
 	<br/>
-		<form action="" method="post" id="form">
+		<form action="cadastrar.php" method="post" id="form">
 		Digitae: 
 		<br>
 			<textarea name="msg" id="msg"></textarea>
-			<input type="hidden" name="id" value="<?php echo $_GET['$user'];?>">
+			<input type="hidden" name="id" value="<?php echo $_GET['user'];?>">
 			<input type="submit" value="Enviar">
 			
 		</form>
