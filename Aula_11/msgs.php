@@ -2,6 +2,13 @@
 include('conn.php');
     $todas = listarMensagens();
     while($msg = $todas->fetch_array()){
-    	echo '<p>'.$msg['origem'].': '.$msg['mensagem'].'</p>';
+    	if($msg['origem'] == $_GET['user'])
+    	{
+    		echo '<p class="activeuser">'.$msg['nome'].': '.$msg['mensagem'].'</p>';
+    	}
+    	else
+    	{
+    		echo '<p>'.$msg['nome'].': '.$msg['mensagem'].'</p>';
+    	}
     }
 ?>

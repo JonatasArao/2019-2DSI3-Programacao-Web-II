@@ -1,72 +1,70 @@
 <?php
 include('conn.php');
 ?>
-<style>
-	
-#box{width:500px;max-height:400px;min-height:400px;border: 1px solid navy;padding:10px; overflow-y: scroll;}
-#msg{width:450px;min-height:100px;float:left;}
-#btn{margin-left:10px;}
-#users{float:left;margin-left:550px;width:200px;border:1px solid blue;
-min-height:200px;
-overflow:auto;
-position:absolute;}
-#users li{
-display: block inline;
-text-decoration:none;
-width:100%;
-height:20px;
-border:1px  dotted red;
-}
-li{
-	text-decoration: none;
-	display: inline-block;
-	text-align: center;	
-	width: 90%;
-}
-</style>
 
-<script src="jquery.min.js"></script>
-<script>
-	$(document).ready(function(){
-		setInterval(function(){
-			$('#box').load('msgs.php');
-			$('#box').animate({scrollTop: $('#box')[0].scrollHeight}, 500);
-		}, 1000);
-	});
-	$(document).on('submit','#form',function(){
-		var dados =  $(this).serialize();
-		$.ajax({
-			type: 'POST',
-			url: 'cadastrar.php',
-			data: dados,
-			success: function(){
-				// o que fazer quando da certo
-				$('#msg').val('');
-			}
-		})
-		return false;
-	});
-</script>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Chat</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/style.css">
+	<script src="js/jquery.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			setInterval(function(){
+				$('#box').load('msgs.php?user=<?php echo $_GET['user']; ?>');
+				$('#box').animate({scrollTop: $('#box')[0].scrollHeight}, 500);
+			}, 1000);
+		});
+		$(document).on('submit','#form',function(){
+			var dados =  $(this).serialize();
+			$.ajax({
+				type: 'POST',
+				url: 'cadastrar.php',
+				data: dados,
+				success: function(){
+					// o que fazer quando da certo
+					$('#msg').val('');
+				}
+			})
+			return false;
+		});
+	</script>
+</head>
 
-	<div id="users">
-	<!-- mostrar usuarios online -->
-	<?php
-		$usuarios = ListarUsuarios();
-		while($user = $usuarios->fetch_array()){
-			echo '<li class="privado" id="" value="">'.$user['nome'].'</li>';
-		}
-	?>
-	<!-- fim -->
-	</div>
-	<div name="box" id="box">		
+<body class="bg-grey">
 
-	</div>
-	<br/>
-		<form action="cadastrar.php" method="post" id="form">
-		Digitae: 
+	<section class="container mt-3">
+		<div class="row">
+			<div class="col-md-8">
+				<div class="bg-chat shadow rounded py-3 px-5" name="box" id="box">		
+
+				</div>	
+			</div>
+		<div class="col-md-4">
+			<ul class="list-group text-center shadow rounded" id="users">
+			<!-- mostrar usuarios online -->
+			<?php
+				$usuarios = ListarUsuarios();
+				while($user = $usuarios->fetch_array()){
+					echo '<li class="list-group-item bg-chat" id="" value="">'.$user['nome'].'</li>';
+				}
+			?>
+			<!-- fim -->
+			</div>	
+		</div>
+
 		<br>
-			<textarea name="msg" id="msg"></textarea>
-			<input type="hidden" name="id" value="<?php echo $_GET['user'];?>">
-			<input type="submit" value="Enviar">
-			
-		</form>
+		<div class="row">
+			<form class="col-md-8" action="cadastrar.php" method="post" id="form">
+				<label for="msg">Digitar:</label><br>
+				<textarea class="form-control shadow" name="msg" id="msg"></textarea>
+				<input type="hidden" name="id" value="<?php echo $_GET['user'];?>">
+				<input class="btn btn-success btn-block mt-2 shadow" type="submit" value="Enviar">
+			</form>
+		</div>
+	</section>
+
+</body>
+
+</html>

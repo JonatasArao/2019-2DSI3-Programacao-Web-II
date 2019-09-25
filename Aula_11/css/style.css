@@ -1,0 +1,13 @@
+#box{max-height:400px;min-height:400px;  overflow-y: scroll;}
+#msg{min-height:100px;}
+#users{overflow:auto;}
+.activeuser{
+	color: green;
+	text-align: right;
+}
+.bg-grey{
+	background-color: #e0e0e0;
+}
+.bg-chat{
+	background-color: #fafafa;
+}
