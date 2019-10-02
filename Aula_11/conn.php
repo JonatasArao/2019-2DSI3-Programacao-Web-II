@@ -48,7 +48,7 @@ function CadastrarMensagem($msg,$destino,$origem){
 	}
 }
 function ListarMensagens(){
-	$sql = 'SELECT m.*, u.nome FROM mensagem m, user u WHERE u.id = m.origem';
+	$sql = 'SELECT m.*, u.nome FROM mensagem m, user u WHERE u.id = m.origem ORDER BY id ASC';
 	$resultado = $GLOBALS['conexao']->query($sql);	
 	return ($resultado) ? $resultado : false;
 }

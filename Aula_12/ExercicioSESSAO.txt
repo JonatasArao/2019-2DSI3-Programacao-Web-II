@@ -1,0 +1,7 @@
+Exercício:
+
+Crie um sistema de quiz, contendo 6 páginas (p1,p2,p3,p4,p5,resultado)
+	-p1: usuário digita seu nome e email, e deverá ser redirecionado para p2
+	-p2: apresentar ao usuário uma questão com 5 alternativas, após responder, redirecionar o usuário para p3..repetindo o processo até a p5
+	-p5 exibir o resultado do teste, mostrando quantas questões o usuário acertou/errou
+	obs>> o usuário não pode responder a mesma questão 2 vezez, sendo assim, o sistema não deve deixar também o usuário acessar a p3 antes de ter passado pela p2...etc
