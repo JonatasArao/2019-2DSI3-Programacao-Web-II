@@ -1,3 +1,27 @@
+<?php
+//trabalhando com sessão!
+session_start();
+
+if($_SESSION['paginas'] != array(
+    "p1" => true,
+    "p2" => true,
+    "p3" => true,
+    "p4" => false,
+    "p5" => false
+)){
+    header('location: p3.php');
+}
+
+if(isset($_SESSION['respostas'][3])){
+    header('location: resultado.php');
+}
+
+if($_POST){
+    $_SESSION['paginas']['p4'] = true;
+    $_SESSION['respostas'][3] = $_POST['resposta3'];
+    header('location: p5.php');
+}
+?>
 <!DOCTYPE html>
 
 <head>

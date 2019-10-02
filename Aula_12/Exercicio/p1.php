@@ -5,12 +5,14 @@ session_start();
 if($_POST){
 	$_SESSION['nome'] = $_POST['nome'];
 	$_SESSION['email'] = $_POST['email'];
-    $_SESSION['logado'] = true;
-    $_SESSION['p2'] = false;
-    $_SESSION['p3'] = false;
-    $_SESSION['p4'] = false;
-    $_SESSION['p5'] = false;
-	header('location: p2.php');
+    $_SESSION['paginas'] = array(
+        "p1" => true,
+        "p2" => false,
+        "p3" => false,
+        "p4" => false,
+        "p5" => false
+    );
+    header('location: p2.php');
 }
 ?>
 <!DOCTYPE html>
